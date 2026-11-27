@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import {
   Layers,
   Smartphone,
@@ -37,27 +36,23 @@ export function Leadership() {
           description="Beyond writing code, I bring architectural thinking, team leadership and a quality-first mindset to every project."
         />
 
-        {/* icon / title / description share parent row tracks */}
+        {/* Reveal is the grid item: icon / title / description share parent rows */}
         <div className="grid-auto-sm sg-parent">
           {leadership.map((item, idx) => {
             const Icon = icons[item.icon] ?? Layers;
             return (
-              <Reveal key={item.title} delay={idx * 0.06} className="h-full">
-                <motion.div
-                  whileHover={{ y: -6 }}
-                  transition={{ type: 'spring', damping: 20, stiffness: 300 }}
-                  className="glass group sg-card w-full rounded-2xl p-5 sm:p-6 transition-shadow hover:shadow-xl hover:shadow-accent/10"
-                >
-                  <span className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 text-primary transition-transform group-hover:scale-110 group-hover:rotate-3">
-                    <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
-                  </span>
-                  <h3 className="text-base font-semibold leading-tight">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    {item.description}
-                  </p>
-                </motion.div>
+              <Reveal
+                key={item.title}
+                delay={idx * 0.06}
+                className="glass group sg-card h-full w-full rounded-2xl p-5 sm:p-6 transition-shadow hover:shadow-xl hover:shadow-accent/10"
+              >
+                <span className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 text-primary transition-transform group-hover:scale-110 group-hover:rotate-3">
+                  <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
+                </span>
+                <h3 className="text-base font-semibold leading-tight">{item.title}</h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {item.description}
+                </p>
               </Reveal>
             );
           })}
