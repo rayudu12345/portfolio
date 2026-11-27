@@ -78,7 +78,7 @@ export function Footer() {
               Experience
             </h3>
 
-            <div className="glass liquid-glass-strong rounded-xl p-4">
+            <div className="glass-strong rounded-xl p-4">
               <div className="flex items-center gap-3">
                 <Briefcase className="h-5 w-5 text-primary" />
                 <div>
