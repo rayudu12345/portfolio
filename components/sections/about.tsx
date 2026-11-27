@@ -8,26 +8,26 @@ import { aboutText, domains, profile } from '@/lib/portfolio-data';
 
 export function About() {
   return (
-    <section id="about" className="relative py-24 sm:py-32">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+    <section id="about" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
+      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
         <SectionHeader
           eyebrow="About Me"
           title="Get to know me"
         />
 
-        <div className="grid gap-8 lg:grid-cols-5">
+        <div className="grid w-full gap-5 sm:gap-8 lg:grid-cols-5">
           {/* Bio */}
           <Reveal className="lg:col-span-3" delay={0.1}>
-            <div className="glass h-full rounded-2xl p-8">
-              <div className="mb-6 flex items-center gap-3">
+            <div className="glass h-full w-full rounded-2xl p-5 sm:p-8">
+              <div className="mb-5 sm:mb-6 flex items-center gap-3">
                 <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/15 text-primary">
                   <User className="h-5 w-5" />
                 </span>
-                <h3 className="text-xl font-semibold">Professional Summary</h3>
+                <h3 className="text-lg sm:text-xl font-semibold">Professional Summary</h3>
               </div>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <div className="space-y-3 sm:space-y-4 text-muted-foreground leading-relaxed">
                 {aboutText.map((para, i) => (
-                  <p key={i} className="text-base sm:text-lg">
+                  <p key={i} className="text-sm sm:text-base lg:text-lg">
                     {para}
                   </p>
                 ))}
@@ -37,16 +37,16 @@ export function About() {
 
           {/* Quick facts + domains */}
           <Reveal className="lg:col-span-2" delay={0.2}>
-            <div className="glass h-full rounded-2xl p-8">
-              <h3 className="mb-6 text-lg font-semibold">Quick Facts</h3>
-              <div className="space-y-4">
+            <div className="glass h-full w-full rounded-2xl p-5 sm:p-8">
+              <h3 className="mb-5 sm:mb-6 text-base sm:text-lg font-semibold">Quick Facts</h3>
+              <div className="space-y-3 sm:space-y-4">
                 <div className="flex items-center justify-between border-b border-border/50 pb-3">
                   <span className="text-sm text-muted-foreground">Name</span>
                   <span className="text-sm font-medium">{profile.name}</span>
                 </div>
                 <div className="flex items-center justify-between border-b border-border/50 pb-3">
                   <span className="text-sm text-muted-foreground">Role</span>
-                  <span className="text-sm font-medium">{profile.role}</span>
+                  <span className="text-sm font-medium text-right">{profile.role}</span>
                 </div>
                 <div className="flex items-center justify-between border-b border-border/50 pb-3">
                   <span className="text-sm text-muted-foreground">
@@ -72,7 +72,7 @@ export function About() {
                 </div>
               </div>
 
-              <h3 className="mb-4 mt-8 text-lg font-semibold">Domains</h3>
+              <h3 className="mb-4 mt-6 sm:mt-8 text-base sm:text-lg font-semibold">Domains</h3>
               <div className="flex flex-wrap gap-2">
                 {domains.map((domain, i) => (
                   <motion.span
@@ -81,7 +81,7 @@ export function About() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05 }}
-                    className="inline-flex items-center gap-1.5 rounded-lg bg-secondary/60 px-3 py-1.5 text-xs font-medium"
+                    className="inline-flex items-center gap-1.5 rounded-lg bg-secondary/60 px-2.5 py-1.5 text-xs font-medium"
                   >
                     <CheckCircle2 className="h-3 w-3 text-primary" />
                     {domain}
