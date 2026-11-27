@@ -29,51 +29,51 @@ export function Projects() {
           description="A selection of production applications I've built and led across web and mobile platforms."
         />
 
-        {/* Parent grid. Each card is a subgrid spanning 5 rows:
-            header, description, tech, meta, action — so buttons align. */}
+        {/* Reveal is the grid item. It spans 5 parent rows and adopts them via subgrid,
+            so header / description / tech / meta / button line up across the row. */}
         <div className="grid-auto-lg sg-parent">
           {projects.map((project, idx) => (
-            <Reveal key={project.id} delay={idx * 0.08} className="h-full">
-              <ProjectCard
-                project={project}
-                onViewDetails={() => setSelected(project)}
-              />
-            </Reveal>
+            <ProjectCard
+              key={project.id}
+              project={project}
+              delay={idx * 0.08}
+              onViewDetails={() => setSelected(project)}
+            />
           ))}
         </div>
       </div>
 
-      <ProjectModal
-        project={selected}
-        onClose={() => setSelected(null)}
-      />
+      <ProjectModal project={selected} onClose={() => setSelected(null)} />
     </section>
   );
 }
 
 function ProjectCard({
   project,
+  delay,
   onViewDetails,
 }: {
   project: Project;
+  delay: number;
   onViewDetails: () => void;
 }) {
   const PlatformIcon = project.platform === 'Web' ? Monitor : Smartphone;
 
   return (
-    <motion.article
-      whileHover={{ y: -6 }}
-      transition={{ type: 'spring', damping: 18, stiffness: 300 }}
-      className="glass glass-sheen group sg-card-5 w-full rounded-2xl p-4 sm:p-6 border border-border/50 transition-all duration-300 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10"
+    <Reveal
+      delay={delay}
+      className="glass glass-sheen group sg-card-5 h-full w-full rounded-2xl p-4 sm:p-6 border border-border/50 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10"
     >
       {/* row 1 — header */}
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-3 min-w-0">
-          <span className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary/25 to-accent/25 text-primary transition-transform group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/20">
+          <span className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary/25 to-accent/25 text-primary transition-transform group-hover:scale-110">
             <PlatformIcon className="h-4 w-4 sm:h-5 sm:w-5" />
           </span>
           <div className="min-w-0">
-            <h3 className="text-base sm:text-lg font-bold leading-tight group-hover:text-primary transition-colors truncate">{project.name}</h3>
+            <h3 className="text-base sm:text-lg font-bold leading-tight group-hover:text-primary transition-colors truncate">
+              {project.name}
+            </h3>
             <p className="text-xs text-muted-foreground">{project.domain}</p>
           </div>
         </div>
@@ -87,12 +87,12 @@ function ProjectCard({
         {project.shortDescription}
       </p>
 
-      {/* row 3 — tech (flexes) */}
+      {/* row 3 — tech */}
       <div className="flex flex-wrap content-start gap-1.5">
         {project.technologies.map((tech) => (
           <span
             key={tech}
-            className="rounded-md bg-secondary/60 px-2 py-0.5 sm:px-2.5 sm:py-1 text-xs font-medium hover:bg-primary/10 transition-colors"
+            className="rounded-md bg-secondary/60 px-2 py-0.5 sm:px-2.5 sm:py-1 text-xs font-medium"
           >
             {tech}
           </span>
@@ -115,7 +115,7 @@ function ProjectCard({
         </div>
       </div>
 
-      {/* row 5 — action, aligned across the row via subgrid */}
+      {/* row 5 — action: shared track, so buttons align across the row */}
       <div className="sg-action">
         <Button
           variant="outline"
@@ -126,7 +126,7 @@ function ProjectCard({
           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
         </Button>
       </div>
-    </motion.article>
+    </Reveal>
   );
 }
 
