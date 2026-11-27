@@ -28,16 +28,16 @@ const icons: Record<string, React.ElementType> = {
 
 export function Leadership() {
   return (
-    <section id="leadership" className="relative py-24 sm:py-32">
-      <div className="absolute left-1/4 top-1/3 h-72 w-72 rounded-full bg-primary/8 blur-[120px]" />
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+    <section id="leadership" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
+      <div className="absolute left-1/4 top-1/3 h-48 w-48 sm:h-72 sm:w-72 rounded-full bg-primary/8 blur-[80px] sm:blur-[120px]" />
+      <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6">
         <SectionHeader
           eyebrow="Leadership & Expertise"
           title="What I Bring"
           description="Beyond writing code, I bring architectural thinking, team leadership and a quality-first mindset to every project."
         />
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid w-full gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {leadership.map((item, idx) => {
             const Icon = icons[item.icon] ?? Layers;
             return (
@@ -45,10 +45,10 @@ export function Leadership() {
                 <motion.div
                   whileHover={{ y: -6 }}
                   transition={{ type: 'spring', damping: 20, stiffness: 300 }}
-                  className="glass group h-full rounded-2xl p-6 transition-shadow hover:shadow-xl hover:shadow-accent/10"
+                  className="glass group h-full w-full rounded-2xl p-5 sm:p-6 transition-shadow hover:shadow-xl hover:shadow-accent/10"
                 >
-                  <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 text-primary transition-transform group-hover:scale-110 group-hover:rotate-3">
-                    <Icon className="h-6 w-6" />
+                  <span className="mb-4 flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 text-primary transition-transform group-hover:scale-110 group-hover:rotate-3">
+                    <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
                   </span>
                   <h3 className="mb-2 text-base font-semibold leading-tight">
                     {item.title}
