@@ -144,14 +144,10 @@ export function Hero() {
               <div className="relative glass-photo rounded-full p-1.5 sm:p-2">
                 <div className="relative h-48 w-48 sm:h-64 sm:w-64 md:h-72 md:w-72 overflow-hidden rounded-full">
                   <img
-                    src="/profile-placeholder.svg"
-                    alt={`${profile.name} \u2014 profile photo`}
+                    src="/profile.jpg"
+                    alt={`${profile.name} — profile photo`}
                     className="h-full w-full object-cover"
                   />
-                  {/* Replace the SVG with your real photo:
-                      1. Add public/profile.jpg
-                      2. Change src to "/profile.jpg"
-                  */}
                 </div>
               </div>
 
