@@ -66,6 +66,10 @@
   ::selection {
     @apply bg-primary/40 text-foreground;
   }
+  /* Better tap targets on mobile */
+  button, a {
+    @apply touch-manipulation;
+  }
 }
 
 @layer utilities {
@@ -135,4 +139,12 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--primary) / 0.7);
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 640px) {
+  .glass, .glass-strong {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
 }
