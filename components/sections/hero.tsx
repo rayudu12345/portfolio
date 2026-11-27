@@ -59,7 +59,7 @@ export function Hero() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground"
             >
-              Frontend Developer
+              {profile.role}
             </motion.p>
             <h1 className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
               <AnimatedText text="CHANGALRAYUDU" delay={0.15} />
