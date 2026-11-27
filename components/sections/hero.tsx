@@ -35,122 +35,162 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 w-full">
-        <div className="flex flex-col items-start gap-6 sm:gap-8">
-          {/* Status badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Badge
-              variant="outline"
-              className="glass border-primary/40 px-3 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm text-primary shadow-lg"
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* Left content */}
+          <div className="lg:col-span-7 flex flex-col items-start gap-6 sm:gap-8">
+            {/* Status badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
             >
-              <span className="mr-2 flex h-2 w-2 rounded-full bg-green-400 animate-pulse" />
-              Available for opportunities
-            </Badge>
-          </motion.div>
+              <Badge
+                variant="outline"
+                className="glass border-primary/40 px-3 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm text-primary shadow-lg"
+              >
+                <span className="mr-2 flex h-2 w-2 rounded-full bg-green-400 animate-pulse" />
+                Available for opportunities
+              </Badge>
+            </motion.div>
 
-          {/* Name */}
-          <div>
+            {/* Name */}
+            <div>
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="mb-2 sm:mb-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-primary"
+              >
+                {profile.role}
+              </motion.p>
+              <h1 className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl leading-none">
+                <AnimatedText text="CHANGALRAYUDU" delay={0.15} />
+                <br />
+                <span className="text-gradient">
+                  <AnimatedText text="D" delay={0.6} />
+                </span>
+              </h1>
+            </div>
+
+            {/* Tagline */}
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="mb-2 sm:mb-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-primary"
+              transition={{ duration: 0.5, delay: 0.7 }}
+              className="max-w-2xl text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed"
             >
-              {profile.role}
+              &ldquo;{profile.tagline}&rdquo;
             </motion.p>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl leading-none">
-              <AnimatedText text="CHANGALRAYUDU" delay={0.15} />
-              <br />
-              <span className="text-gradient">
-                <AnimatedText text="D" delay={0.6} />
-              </span>
-            </h1>
+
+            {/* Tech badges */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.85 }}
+              className="flex flex-wrap gap-2"
+            >
+              {heroTech.map((tech) => (
+                <Badge
+                  key={tech}
+                  variant="secondary"
+                  className="glass px-2.5 py-1 sm:px-3.5 sm:py-1.5 text-xs sm:text-sm font-medium hover:bg-primary/10 transition-colors"
+                >
+                  {tech}
+                </Badge>
+              ))}
+            </motion.div>
+
+            {/* Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 1 }}
+              className="flex flex-wrap gap-2 sm:gap-3"
+            >
+              <Button asChild size="lg" className="group shadow-lg shadow-primary/20 text-sm sm:text-base">
+                <a href="#projects">
+                  View Projects
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </a>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="glass text-sm sm:text-base">
+                <a href={profile.resumeUrl} download>
+                  <Download className="mr-2 h-4 w-4" />
+                  Download Resume
+                </a>
+              </Button>
+              <Button asChild variant="ghost" size="lg" className="text-sm sm:text-base">
+                <a href="#contact">
+                  <Mail className="mr-2 h-4 w-4" />
+                  Contact Me
+                </a>
+              </Button>
+            </motion.div>
           </div>
 
-          {/* Tagline */}
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.7 }}
-            className="max-w-2xl text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed"
-          >
-            &ldquo;{profile.tagline}&rdquo;
-          </motion.p>
-
-          {/* Tech badges */}
+          {/* Profile photo section */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.85 }}
-            className="flex flex-wrap gap-2"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="lg:col-span-5 flex justify-center lg:justify-end"
           >
-            {heroTech.map((tech) => (
-              <Badge
-                key={tech}
-                variant="secondary"
-                className="glass px-2.5 py-1 sm:px-3.5 sm:py-1.5 text-xs sm:text-sm font-medium hover:bg-primary/10 transition-colors"
-              >
-                {tech}
-              </Badge>
-            ))}
-          </motion.div>
+            <div className="relative">
+              {/* Glow rings */}
+              <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-primary/30 to-accent/30 blur-2xl opacity-60 animate-pulse" />
+              <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-primary to-accent opacity-40" />
 
-          {/* Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1 }}
-            className="flex flex-wrap gap-2 sm:gap-3"
-          >
-            <Button asChild size="lg" className="group shadow-lg shadow-primary/20 text-sm sm:text-base">
-              <a href="#projects">
-                View Projects
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="glass text-sm sm:text-base">
-              <a href={profile.resumeUrl} download>
-                <Download className="mr-2 h-4 w-4" />
-                Download Resume
-              </a>
-            </Button>
-            <Button asChild variant="ghost" size="lg" className="text-sm sm:text-base">
-              <a href="#contact">
-                <Mail className="mr-2 h-4 w-4" />
-                Contact Me
-              </a>
-            </Button>
-          </motion.div>
-
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.15 }}
-            className="mt-4 sm:mt-8 grid w-full grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-4"
-          >
-            {heroStats.map((stat) => {
-              const Icon = statIcons[stat.icon] ?? Briefcase;
-              return (
-                <div
-                  key={stat.label}
-                  className="glass rounded-xl sm:rounded-2xl p-4 sm:p-5 transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-primary/10"
-                >
-                  <Icon className="mb-2 sm:mb-3 h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                  <div className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight">
-                    {stat.value}
+              {/* Photo container with glass frame */}
+              <div className="relative glass-photo rounded-full p-1.5 sm:p-2">
+                <div className="relative h-48 w-48 sm:h-64 sm:w-64 md:h-72 md:w-72 overflow-hidden rounded-full bg-gradient-to-br from-primary/20 to-accent/20">
+                  {/* Placeholder with initials \u2014 replace src with your photo at /profile.jpg */}
+                  <div className="flex h-full w-full items-center justify-center text-5xl sm:text-6xl md:text-7xl font-bold text-gradient">
+                    CD
                   </div>
-                  <div className="mt-1 text-[11px] sm:text-xs md:text-sm text-muted-foreground">
-                    {stat.label}
-                  </div>
+                  {/* Uncomment and add your photo to public/profile.jpg
+                  <img
+                    src="/profile.jpg"
+                    alt={`${profile.name} \u2014 profile photo`}
+                    className="h-full w-full object-cover"
+                  />
+                  */}
                 </div>
-              );
-            })}
+              </div>
+
+              {/* Floating status indicator */}
+              <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 flex items-center gap-2 glass rounded-full px-3 py-1.5 text-xs font-medium">
+                <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
+                Open to work
+              </div>
+            </div>
           </motion.div>
         </div>
+
+        {/* Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.15 }}
+          className="mt-12 sm:mt-16 grid w-full grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-4"
+        >
+          {heroStats.map((stat) => {
+            const Icon = statIcons[stat.icon] ?? Briefcase;
+            return (
+              <div
+                key={stat.label}
+                className="glass rounded-xl sm:rounded-2xl p-4 sm:p-5 transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-primary/10"
+              >
+                <Icon className="mb-2 sm:mb-3 h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+                <div className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight">
+                  {stat.value}
+                </div>
+                <div className="mt-1 text-[11px] sm:text-xs md:text-sm text-muted-foreground">
+                  {stat.label}
+                </div>
+              </div>
+            );
+          })}
+        </motion.div>
       </div>
 
       {/* Scroll indicator */}
