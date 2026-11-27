@@ -176,7 +176,7 @@ export function Hero() {
             return (
               <div
                 key={stat.label}
-                className="glass rounded-xl sm:rounded-2xl p-4 sm:p-5 transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-primary/10"
+                className="liquid-glass-strong rounded-xl sm:rounded-2xl p-4 sm:p-5 transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-primary/10"
               >
                 <Icon className="mb-2 sm:mb-3 h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                 <div className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight">
