@@ -47,26 +47,26 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-24 sm:py-32">
-      <div className="absolute left-1/2 top-1/2 h-72 w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/10 blur-[140px]" />
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+    <section id="contact" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
+      <div className="absolute left-1/2 top-1/2 h-48 w-64 sm:h-72 sm:w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/10 blur-[80px] sm:blur-[140px]" />
+      <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6">
         <SectionHeader
           eyebrow="Contact"
           title="Let's Work Together"
           description="Have a project or role in mind? I'm always open to discussing new opportunities."
         />
 
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid w-full gap-5 sm:gap-8 lg:grid-cols-2">
           {/* Contact info */}
           <Reveal delay={0.1}>
-            <div className="glass flex h-full flex-col rounded-2xl p-8">
-              <h3 className="mb-2 text-xl font-semibold">Get in Touch</h3>
-              <p className="mb-8 text-sm text-muted-foreground leading-relaxed">
+            <div className="glass flex h-full w-full flex-col rounded-2xl p-5 sm:p-8">
+              <h3 className="mb-2 text-lg sm:text-xl font-semibold">Get in Touch</h3>
+              <p className="mb-6 sm:mb-8 text-sm text-muted-foreground leading-relaxed">
                 Feel free to reach out through any of the channels below. I
                 typically respond within 24 hours.
               </p>
 
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 <ContactItem
                   icon={<Phone className="h-5 w-5" />}
                   label="Phone"
@@ -100,14 +100,14 @@ export function Contact() {
                 />
               </div>
 
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Button asChild>
+              <div className="mt-6 sm:mt-8 flex flex-wrap gap-3">
+                <Button asChild className="flex-1 sm:flex-none">
                   <a href={`mailto:${profile.email}`}>
                     <Mail className="mr-2 h-4 w-4" />
                     Email Me
                   </a>
                 </Button>
-                <Button asChild variant="outline">
+                <Button asChild variant="outline" className="flex-1 sm:flex-none">
                   <a
                     href={profile.linkedin}
                     target="_blank"
@@ -117,7 +117,7 @@ export function Contact() {
                     LinkedIn
                   </a>
                 </Button>
-                <Button asChild variant="outline">
+                <Button asChild variant="outline" className="flex-1 sm:flex-none">
                   <a
                     href={profile.github}
                     target="_blank"
@@ -135,11 +135,11 @@ export function Contact() {
           <Reveal delay={0.2}>
             <form
               onSubmit={handleSubmit}
-              className="glass flex h-full flex-col rounded-2xl p-8"
+              className="glass flex h-full w-full flex-col rounded-2xl p-5 sm:p-8"
             >
-              <h3 className="mb-6 text-xl font-semibold">Send a Message</h3>
+              <h3 className="mb-5 sm:mb-6 text-lg sm:text-xl font-semibold">Send a Message</h3>
 
-              <div className="space-y-5">
+              <div className="space-y-4 sm:space-y-5">
                 <div>
                   <label
                     htmlFor="name"
@@ -238,7 +238,7 @@ function ContactItem({
   const content = (
     <motion.div
       whileHover={{ x: 4 }}
-      className="flex items-center gap-4 rounded-xl border border-border/40 bg-secondary/20 p-4 transition-colors hover:border-primary/40"
+      className="flex w-full items-center gap-3 sm:gap-4 rounded-xl border border-border/40 bg-secondary/20 p-3 sm:p-4 transition-colors hover:border-primary/40"
     >
       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/15 text-primary">
         {icon}
@@ -256,6 +256,7 @@ function ContactItem({
         href={href}
         target={external ? '_blank' : undefined}
         rel={external ? 'noopener noreferrer' : undefined}
+        className="block w-full"
       >
         {content}
       </a>
