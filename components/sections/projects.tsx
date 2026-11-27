@@ -29,10 +29,11 @@ export function Projects() {
           description="A selection of production applications I've built and led across web and mobile platforms."
         />
 
-        {/* auto-fit columns — adapts without breakpoint classes */}
-        <div className="grid-auto-lg">
+        {/* Parent grid. Each card is a subgrid spanning 5 rows:
+            header, description, tech, meta, action — so buttons align. */}
+        <div className="grid-auto-lg sg-parent">
           {projects.map((project, idx) => (
-            <Reveal key={project.id} delay={idx * 0.08}>
+            <Reveal key={project.id} delay={idx * 0.08} className="h-full">
               <ProjectCard
                 project={project}
                 onViewDetails={() => setSelected(project)}
@@ -60,12 +61,13 @@ function ProjectCard({
   const PlatformIcon = project.platform === 'Web' ? Monitor : Smartphone;
 
   return (
-    <motion.div
+    <motion.article
       whileHover={{ y: -6 }}
       transition={{ type: 'spring', damping: 18, stiffness: 300 }}
-      className="glass glass-sheen group flex h-full w-full flex-col rounded-2xl p-4 sm:p-6 border border-border/50 transition-all duration-300 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10"
+      className="glass glass-sheen group sg-card-5 w-full rounded-2xl p-4 sm:p-6 border border-border/50 transition-all duration-300 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10"
     >
-      <div className="mb-3 sm:mb-4 flex items-start justify-between gap-3">
+      {/* row 1 — header */}
+      <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-3 min-w-0">
           <span className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary/25 to-accent/25 text-primary transition-transform group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/20">
             <PlatformIcon className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -80,11 +82,13 @@ function ProjectCard({
         </Badge>
       </div>
 
-      <p className="mb-3 sm:mb-4 text-sm leading-relaxed text-muted-foreground">
+      {/* row 2 — description */}
+      <p className="text-sm leading-relaxed text-muted-foreground">
         {project.shortDescription}
       </p>
 
-      <div className="mb-3 sm:mb-4 flex flex-wrap gap-1.5">
+      {/* row 3 — tech (flexes) */}
+      <div className="flex flex-wrap content-start gap-1.5">
         {project.technologies.map((tech) => (
           <span
             key={tech}
@@ -95,7 +99,8 @@ function ProjectCard({
         ))}
       </div>
 
-      <div className="mb-4 sm:mb-5 grid grid-cols-3 gap-2 sm:gap-3 border-t border-border/40 pt-3 sm:pt-4 text-xs">
+      {/* row 4 — meta */}
+      <div className="grid grid-cols-3 gap-2 sm:gap-3 border-t border-border/40 pt-3 text-xs">
         <div className="min-w-0">
           <p className="text-muted-foreground">Role</p>
           <p className="mt-0.5 font-medium truncate">{project.role}</p>
@@ -110,7 +115,8 @@ function ProjectCard({
         </div>
       </div>
 
-      <div className="mt-auto">
+      {/* row 5 — action, aligned across the row via subgrid */}
+      <div className="sg-action">
         <Button
           variant="outline"
           className="w-full group/btn hover:bg-primary hover:text-primary-foreground transition-colors text-sm"
@@ -120,7 +126,7 @@ function ProjectCard({
           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
         </Button>
       </div>
-    </motion.div>
+    </motion.article>
   );
 }
 
@@ -189,27 +195,13 @@ function ProjectModal({
         </p>
 
         <div className="mb-5 sm:mb-6 grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3">
-          <DetailItem
-            icon={<Users className="h-4 w-4" />}
-            label="Team Size"
-            value={`${project.team} members`}
-          />
-          <DetailItem
-            icon={<Calendar className="h-4 w-4" />}
-            label="Duration"
-            value={project.duration}
-          />
-          <DetailItem
-            icon={<PlatformIcon className="h-4 w-4" />}
-            label="Role"
-            value={project.role}
-          />
+          <DetailItem icon={<Users className="h-4 w-4" />} label="Team Size" value={`${project.team} members`} />
+          <DetailItem icon={<Calendar className="h-4 w-4" />} label="Duration" value={project.duration} />
+          <DetailItem icon={<PlatformIcon className="h-4 w-4" />} label="Role" value={project.role} />
         </div>
 
         <div className="mb-5 sm:mb-6">
-          <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-            Technologies
-          </h4>
+          <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">Technologies</h4>
           <div className="flex flex-wrap gap-2">
             {project.technologies.map((tech) => (
               <Badge key={tech} variant="secondary" className="px-2.5 py-1 sm:px-3 sm:py-1.5 text-xs">
@@ -220,9 +212,7 @@ function ProjectModal({
         </div>
 
         <div className="rounded-xl border border-primary/20 bg-primary/5 p-4 sm:p-5">
-          <h4 className="mb-2 text-sm font-semibold uppercase tracking-wider text-primary">
-            Key Contribution
-          </h4>
+          <h4 className="mb-2 text-sm font-semibold uppercase tracking-wider text-primary">Key Contribution</h4>
           <p className="text-sm leading-relaxed">{project.keyContribution}</p>
         </div>
       </motion.div>
@@ -241,9 +231,7 @@ function DetailItem({
 }) {
   return (
     <div className="rounded-xl bg-secondary/40 p-3 sm:p-4">
-      <div className="mb-1.5 flex items-center gap-2 text-primary">
-        {icon}
-      </div>
+      <div className="mb-1.5 flex items-center gap-2 text-primary">{icon}</div>
       <p className="text-xs text-muted-foreground">{label}</p>
       <p className="mt-0.5 text-sm font-medium truncate">{value}</p>
     </div>
