@@ -82,7 +82,7 @@
 }
 
 @layer utilities {
-  /* Advanced glassmorphism with specular rims, saturation boost & layered depth */
+  /* Advanced glassmorphism */
   .glass {
     isolation: isolate;
     background:
@@ -128,7 +128,6 @@
       inset 0 0 0 1px hsl(var(--primary) / 0.2);
   }
 
-  /* Liquid glass with SVG displacement (Chromium) + clean fallback */
   .liquid-glass {
     isolation: isolate;
     background:
@@ -167,7 +166,6 @@
     }
   }
 
-  /* Optional liquid-style sheen on hover */
   .glass-sheen {
     position: relative;
     overflow: hidden;
@@ -224,6 +222,75 @@
   .card-hover {
     @apply transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1;
   }
+
+  /* ===== CSS Grid utilities ===== */
+
+  /* Intrinsic responsive columns — no media queries. min() keeps it safe under 280px. */
+  .grid-auto {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 1.25rem;
+  }
+  .grid-auto-sm {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: 1.25rem;
+  }
+  .grid-auto-lg {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: 1.5rem;
+  }
+
+  /* Equal columns that cannot overflow (minmax(0, 1fr) instead of 1fr) */
+  .grid-equal-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 1024px) {
+    .grid-equal-2 {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+  }
+
+  /* Named-area hero: content | photo on desktop, stacked on mobile */
+  .hero-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-areas:
+      "content"
+      "photo"
+      "stats";
+  }
+  @media (min-width: 1024px) {
+    .hero-grid {
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      grid-template-areas:
+        "content photo"
+        "stats stats";
+      align-items: center;
+    }
+  }
+  .hero-content { grid-area: content; }
+  .hero-photo { grid-area: photo; }
+  .hero-stats { grid-area: stats; }
+
+  /* Subgrid card: titles/actions align across a row when supported */
+  .subgrid-card {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100%;
+  }
+  @supports (grid-template-rows: subgrid) {
+    .subgrid-parent {
+      grid-auto-rows: auto;
+    }
+    .subgrid-card {
+      grid-row: span 3;
+      grid-template-rows: subgrid;
+    }
+  }
 }
 
 @keyframes gradient-shift {
@@ -246,7 +313,7 @@
   background: hsl(var(--primary) / 0.7);
 }
 
-/* Performance: reduce blur / disable heavy displacement on small screens */
+/* Performance: reduce blur on small screens */
 @media (max-width: 640px) {
   .glass, .glass-strong, .glass-photo, .liquid-glass, .liquid-glass-strong {
     --glass-blur: 12px;
