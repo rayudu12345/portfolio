@@ -37,14 +37,14 @@ export function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          'fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300',
           scrolled ? 'py-2 sm:py-3' : 'py-3 sm:py-5'
         )}
       >
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
           <nav
             className={cn(
-              'flex items-center justify-between rounded-2xl px-3 py-2.5 sm:px-4 sm:py-3 transition-all duration-300 glass-sheen',
+              'flex w-full items-center justify-between rounded-2xl px-3 py-2.5 sm:px-4 sm:py-3 transition-all duration-300 glass-sheen',
               scrolled ? 'glass-strong shadow-lg' : 'liquid-glass'
             )}
           >
@@ -55,7 +55,7 @@ export function Navbar() {
               <span className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-accent text-white">
                 <Code2 className="h-4 w-4 sm:h-5 sm:w-5" />
               </span>
-              <span className="hidden xs:block sm:block text-sm sm:text-base">
+              <span className="text-sm sm:text-base">
                 Changalrayudu<span className="text-gradient">.D</span>
               </span>
             </a>
