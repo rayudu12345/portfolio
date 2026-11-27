@@ -61,18 +61,18 @@ function ProjectCard({
 
   return (
     <motion.div
-      whileHover={{ y: -6 }}
-      transition={{ type: 'spring', damping: 20, stiffness: 300 }}
-      className="glass group flex h-full flex-col rounded-2xl p-6 transition-shadow hover:shadow-xl hover:shadow-primary/10"
+      whileHover={{ y: -8 }}
+      transition={{ type: 'spring', damping: 18, stiffness: 300 }}
+      className="glass group flex h-full flex-col rounded-2xl p-6 border border-border/50 transition-all duration-300 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10"
     >
       {/* Header */}
       <div className="mb-4 flex items-start justify-between gap-3">
         <div className="flex items-center gap-3">
-          <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 text-primary transition-transform group-hover:scale-110">
+          <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/25 to-accent/25 text-primary transition-transform group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/20">
             <PlatformIcon className="h-5 w-5" />
           </span>
           <div>
-            <h3 className="text-lg font-bold leading-tight">{project.name}</h3>
+            <h3 className="text-lg font-bold leading-tight group-hover:text-primary transition-colors">{project.name}</h3>
             <p className="text-xs text-muted-foreground">{project.domain}</p>
           </div>
         </div>
@@ -91,7 +91,7 @@ function ProjectCard({
         {project.technologies.map((tech) => (
           <span
             key={tech}
-            className="rounded-md bg-secondary/50 px-2.5 py-1 text-xs font-medium"
+            className="rounded-md bg-secondary/60 px-2.5 py-1 text-xs font-medium hover:bg-primary/10 transition-colors"
           >
             {tech}
           </span>
@@ -99,7 +99,7 @@ function ProjectCard({
       </div>
 
       {/* Meta */}
-      <div className="mb-5 grid grid-cols-3 gap-3 border-t border-border/50 pt-4 text-xs">
+      <div className="mb-5 grid grid-cols-3 gap-3 border-t border-border/40 pt-4 text-xs">
         <div>
           <p className="text-muted-foreground">Role</p>
           <p className="mt-0.5 font-medium">{project.role}</p>
@@ -118,7 +118,7 @@ function ProjectCard({
       <div className="mt-auto">
         <Button
           variant="outline"
-          className="w-full group/btn"
+          className="w-full group/btn hover:bg-primary hover:text-primary-foreground transition-colors"
           onClick={onViewDetails}
         >
           View Details
