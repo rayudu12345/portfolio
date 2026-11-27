@@ -142,17 +142,15 @@ export function Hero() {
 
               {/* Photo container with glass frame */}
               <div className="relative glass-photo rounded-full p-1.5 sm:p-2">
-                <div className="relative h-48 w-48 sm:h-64 sm:w-64 md:h-72 md:w-72 overflow-hidden rounded-full bg-gradient-to-br from-primary/20 to-accent/20">
-                  {/* Placeholder with initials \u2014 replace src with your photo at /profile.jpg */}
-                  <div className="flex h-full w-full items-center justify-center text-5xl sm:text-6xl md:text-7xl font-bold text-gradient">
-                    CD
-                  </div>
-                  {/* Uncomment and add your photo to public/profile.jpg
+                <div className="relative h-48 w-48 sm:h-64 sm:w-64 md:h-72 md:w-72 overflow-hidden rounded-full">
                   <img
-                    src="/profile.jpg"
+                    src="/profile-placeholder.svg"
                     alt={`${profile.name} \u2014 profile photo`}
                     className="h-full w-full object-cover"
                   />
+                  {/* Replace the SVG with your real photo:
+                      1. Add public/profile.jpg
+                      2. Change src to "/profile.jpg"
                   */}
                 </div>
               </div>
