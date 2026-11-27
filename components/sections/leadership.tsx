@@ -37,7 +37,8 @@ export function Leadership() {
           description="Beyond writing code, I bring architectural thinking, team leadership and a quality-first mindset to every project."
         />
 
-        <div className="grid w-full gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Smaller min for denser cards; subgrid aligns titles/descriptions */}
+        <div className="grid-auto-sm subgrid-parent">
           {leadership.map((item, idx) => {
             const Icon = icons[item.icon] ?? Layers;
             return (
@@ -45,7 +46,7 @@ export function Leadership() {
                 <motion.div
                   whileHover={{ y: -6 }}
                   transition={{ type: 'spring', damping: 20, stiffness: 300 }}
-                  className="glass group h-full w-full rounded-2xl p-5 sm:p-6 transition-shadow hover:shadow-xl hover:shadow-accent/10"
+                  className="glass group subgrid-card w-full rounded-2xl p-5 sm:p-6 transition-shadow hover:shadow-xl hover:shadow-accent/10"
                 >
                   <span className="mb-4 flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 text-primary transition-transform group-hover:scale-110 group-hover:rotate-3">
                     <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
