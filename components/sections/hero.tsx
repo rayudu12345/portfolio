@@ -26,13 +26,13 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center overflow-hidden pt-28 pb-16"
+      className="relative flex min-h-screen items-center overflow-hidden pt-28 pb-20"
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-grid opacity-40" />
-      <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-primary/20 blur-[120px]" />
-      <div className="absolute right-1/4 bottom-1/4 h-96 w-96 rounded-full bg-accent/20 blur-[120px]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
+      {/* Enhanced Background */}
+      <div className="absolute inset-0 bg-grid opacity-30" />
+      <div className="absolute left-1/4 top-1/3 h-[500px] w-[500px] rounded-full bg-primary/15 blur-[140px] animate-pulse" />
+      <div className="absolute right-1/4 bottom-1/3 h-[500px] w-[500px] rounded-full bg-accent/15 blur-[140px]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 w-full">
         <div className="flex flex-col items-start gap-8">
@@ -44,7 +44,7 @@ export function Hero() {
           >
             <Badge
               variant="outline"
-              className="glass border-primary/30 px-4 py-1.5 text-sm text-primary"
+              className="glass border-primary/40 px-4 py-1.5 text-sm text-primary shadow-lg"
             >
               <span className="mr-2 flex h-2 w-2 rounded-full bg-green-400 animate-pulse" />
               Available for opportunities
@@ -57,11 +57,11 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground"
+              className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-primary"
             >
               {profile.role}
             </motion.p>
-            <h1 className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+            <h1 className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl leading-none">
               <AnimatedText text="CHANGALRAYUDU" delay={0.15} />
               <br />
               <span className="text-gradient">
@@ -91,7 +91,7 @@ export function Hero() {
               <Badge
                 key={tech}
                 variant="secondary"
-                className="glass px-3 py-1.5 text-sm font-medium"
+                className="glass px-3.5 py-1.5 text-sm font-medium hover:bg-primary/10 transition-colors"
               >
                 {tech}
               </Badge>
@@ -105,13 +105,13 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 1 }}
             className="flex flex-wrap gap-3"
           >
-            <Button asChild size="lg" className="group">
+            <Button asChild size="lg" className="group shadow-lg shadow-primary/20">
               <a href="#projects">
                 View Projects
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
             </Button>
-            <Button asChild variant="outline" size="lg">
+            <Button asChild variant="outline" size="lg" className="glass">
               <a href={profile.resumeUrl} download>
                 <Download className="mr-2 h-4 w-4" />
                 Download Resume
@@ -130,16 +130,16 @@ export function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.15 }}
-            className="mt-6 grid w-full grid-cols-2 gap-4 sm:grid-cols-4"
+            className="mt-8 grid w-full grid-cols-2 gap-4 sm:grid-cols-4"
           >
             {heroStats.map((stat) => {
               const Icon = statIcons[stat.icon] ?? Briefcase;
               return (
                 <div
                   key={stat.label}
-                  className="glass rounded-xl p-4 sm:p-5 transition-transform hover:scale-[1.03]"
+                  className="glass rounded-2xl p-5 transition-all duration-300 hover:scale-[1.04] hover:shadow-xl hover:shadow-primary/10"
                 >
-                  <Icon className="mb-2 h-5 w-5 text-primary" />
+                  <Icon className="mb-3 h-5 w-5 text-primary" />
                   <div className="text-2xl font-bold tracking-tight sm:text-3xl">
                     {stat.value}
                   </div>
@@ -157,13 +157,13 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
+        transition={{ delay: 1.6 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
-        <div className="flex h-10 w-6 items-start justify-center rounded-full border-2 border-muted-foreground/30 p-1.5">
+        <div className="flex h-10 w-6 items-start justify-center rounded-full border-2 border-muted-foreground/40 p-1.5">
           <motion.div
             animate={{ y: [0, 12, 0] }}
-            transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
+            transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
             className="h-2 w-1 rounded-full bg-primary"
           />
         </div>
