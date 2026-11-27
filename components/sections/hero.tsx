@@ -140,13 +140,15 @@ export function Hero() {
               <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-primary/30 to-accent/30 blur-2xl opacity-60 animate-pulse" />
               <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-primary to-accent opacity-40" />
 
-              {/* Photo container with glass frame */}
+              {/* Photo container — 1:1 aspect-ratio locked square that becomes circular */}
               <div className="relative glass-photo rounded-full p-1.5 sm:p-2">
-                <div className="relative h-48 w-48 sm:h-64 sm:w-64 md:h-72 md:w-72 overflow-hidden rounded-full">
+                <div className="relative w-48 sm:w-64 md:w-72 aspect-square overflow-hidden rounded-full">
                   <img
                     src="/profile.jpg"
                     alt={`${profile.name} — profile photo`}
-                    className="h-full w-full object-cover object-[center_18%]"
+                    width={512}
+                    height={512}
+                    className="absolute inset-0 h-full w-full object-cover object-[center_22%]"
                   />
                 </div>
               </div>
