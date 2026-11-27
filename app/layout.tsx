@@ -10,34 +10,34 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Changalrayudu D | Frontend Developer | React | Next.js | React Native',
+  title: 'Changalrayudu D | Senior Software Development Engineer | React | Next.js | React Native',
   description:
-    'Frontend Developer with 8+ years of experience specialising in React.js, Next.js, React Native, TypeScript, JavaScript and Redux.',
+    'Senior Software Development Engineer with 9+ years of experience specialising in React.js, Next.js, React Native, TypeScript, JavaScript and Redux. Expert in enterprise dashboards, migrations, and secure applications.',
   keywords: [
     'Changalrayudu D',
+    'Senior Software Development Engineer',
     'Frontend Developer',
     'React Developer',
     'Next.js Developer',
     'React Native Developer',
     'TypeScript Developer',
     'Redux',
-    'Frontend Engineer',
   ],
   authors: [{ name: 'Changalrayudu D' }],
   openGraph: {
     title:
-      'Changalrayudu D | Frontend Developer | React | Next.js | React Native',
+      'Changalrayudu D | Senior Software Development Engineer | React | Next.js | React Native',
     description:
-      'Frontend Developer with 8+ years of experience specialising in React.js, Next.js, React Native, TypeScript, JavaScript and Redux.',
+      'Senior Software Development Engineer with 9+ years of experience specialising in React.js, Next.js, React Native, TypeScript, JavaScript and Redux.',
     type: 'profile',
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
     title:
-      'Changalrayudu D | Frontend Developer | React | Next.js | React Native',
+      'Changalrayudu D | Senior Software Development Engineer | React | Next.js | React Native',
     description:
-      'Frontend Developer with 8+ years of experience specialising in React.js, Next.js, React Native, TypeScript, JavaScript and Redux.',
+      'Senior Software Development Engineer with 9+ years of experience specialising in React.js, Next.js, React Native, TypeScript, JavaScript and Redux.',
   },
   robots: { index: true, follow: true },
 };
