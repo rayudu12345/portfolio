@@ -63,7 +63,7 @@ function ProjectCard({
     <motion.div
       whileHover={{ y: -6 }}
       transition={{ type: 'spring', damping: 18, stiffness: 300 }}
-      className="glass group flex h-full flex-col rounded-2xl p-5 sm:p-6 border border-border/50 transition-all duration-300 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10"
+      className="glass glass-sheen group flex h-full flex-col rounded-2xl p-5 sm:p-6 border border-border/50 transition-all duration-300 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10"
     >
       {/* Header */}
       <div className="mb-4 flex items-start justify-between gap-3">
