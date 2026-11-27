@@ -15,10 +15,10 @@ const navLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-border/40 py-14 sm:py-16">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid gap-10 md:grid-cols-12 md:gap-8">
-          {/* Brand — consistent with hero */}
+    <footer className="relative border-t border-border/40 py-12 sm:py-16 overflow-hidden">
+      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
+        <div className="grid w-full gap-8 md:grid-cols-12 md:gap-8">
+          {/* Brand */}
           <div className="md:col-span-5 text-center md:text-left">
             <a
               href="#home"
@@ -36,11 +36,10 @@ export function Footer() {
               {profile.role}
             </p>
 
-            <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               {profile.tagline}
             </p>
 
-            {/* Tech tags — same as hero */}
             <div className="mt-4 flex flex-wrap justify-center gap-2 md:justify-start">
               {heroTech.map((tech) => (
                 <Badge
@@ -55,11 +54,11 @@ export function Footer() {
           </div>
 
           {/* Quick links */}
-          <div className="md:col-span-3">
+          <div className="md:col-span-3 text-center md:text-left">
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground">
               Explore
             </h3>
-            <nav className="flex flex-col gap-2.5">
+            <nav className="flex flex-col items-center gap-2.5 md:items-start">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -73,15 +72,15 @@ export function Footer() {
           </div>
 
           {/* Experience highlight + contact */}
-          <div className="md:col-span-4">
+          <div className="md:col-span-4 text-center md:text-left">
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground">
               Experience
             </h3>
 
-            <div className="glass-strong rounded-xl p-4">
-              <div className="flex items-center gap-3">
+            <div className="glass-strong mx-auto w-full max-w-sm rounded-xl p-4 md:mx-0 md:max-w-none">
+              <div className="flex items-center justify-center gap-3 md:justify-start">
                 <Briefcase className="h-5 w-5 text-primary" />
-                <div>
+                <div className="text-left">
                   <div className="text-2xl font-bold tracking-tight">
                     {heroStats[0].value}
                   </div>
@@ -133,10 +132,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border/40 pt-6 sm:flex-row">
-          <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} Changalrayudu D. All rights
-            reserved.
+        <div className="mt-10 sm:mt-12 flex flex-col items-center justify-between gap-4 border-t border-border/40 pt-6 sm:flex-row">
+          <p className="text-xs text-muted-foreground text-center sm:text-left">
+            &copy; {new Date().getFullYear()} Changalrayudu D. All rights reserved.
           </p>
           <a
             href="#home"
