@@ -30,16 +30,16 @@ const icons: Record<string, React.ElementType> = {
 
 export function Skills() {
   return (
-    <section id="skills" className="relative py-24 sm:py-32">
-      <div className="absolute left-1/2 top-1/2 h-64 w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5 blur-[120px]" />
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+    <section id="skills" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
+      <div className="absolute left-1/2 top-1/2 h-48 w-64 sm:h-64 sm:w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5 blur-[80px] sm:blur-[120px]" />
+      <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6">
         <SectionHeader
           eyebrow="Skills"
           title="Technical Expertise"
           description="The tools and technologies I use to build production-grade web and mobile applications."
         />
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid w-full gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {skillCategories.map((cat, idx) => {
             const Icon = icons[cat.icon] ?? Code2;
             return (
@@ -47,15 +47,15 @@ export function Skills() {
                 <motion.div
                   whileHover={{ y: -6 }}
                   transition={{ type: 'spring', damping: 20, stiffness: 300 }}
-                  className="glass group h-full rounded-2xl p-6 transition-shadow hover:shadow-xl hover:shadow-primary/10"
+                  className="glass group h-full w-full rounded-2xl p-5 sm:p-6 transition-shadow hover:shadow-xl hover:shadow-primary/10"
                 >
-                  <div className="mb-5 flex items-center gap-3">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 text-primary transition-transform group-hover:scale-110">
+                  <div className="mb-4 sm:mb-5 flex items-center gap-3">
+                    <span className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 text-primary transition-transform group-hover:scale-110">
                       <Icon className="h-5 w-5" />
                     </span>
-                    <h3 className="text-lg font-semibold">{cat.title}</h3>
+                    <h3 className="text-base sm:text-lg font-semibold">{cat.title}</h3>
                   </div>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {cat.skills.map((skill, i) => (
                       <motion.span
                         key={skill}
@@ -63,7 +63,7 @@ export function Skills() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.04 }}
-                        className="rounded-lg border border-border/60 bg-secondary/40 px-3 py-1.5 text-sm font-medium transition-colors hover:border-primary/40 hover:bg-primary/10"
+                        className="rounded-lg border border-border/60 bg-secondary/40 px-2.5 py-1 sm:px-3 sm:py-1.5 text-xs sm:text-sm font-medium transition-colors hover:border-primary/40 hover:bg-primary/10"
                       >
                         {skill}
                       </motion.span>
