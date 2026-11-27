@@ -66,7 +66,6 @@
   ::selection {
     @apply bg-primary/40 text-foreground;
   }
-  /* Better tap targets on mobile */
   button, a {
     @apply touch-manipulation;
   }
@@ -74,18 +73,32 @@
 
 @layer utilities {
   .glass {
-    background: hsl(var(--card) / 0.55);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid hsl(var(--border) / 0.7);
-    box-shadow: 0 8px 32px -8px hsl(var(--primary) / 0.1);
+    background: hsl(var(--card) / 0.45);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid hsl(var(--border) / 0.5);
+    box-shadow: 
+      0 8px 32px -8px hsl(var(--primary) / 0.15),
+      inset 0 1px 0 0 hsl(var(--foreground) / 0.08);
   }
   .glass-strong {
-    background: hsl(var(--card) / 0.75);
-    backdrop-filter: blur(24px) saturate(200%);
-    -webkit-backdrop-filter: blur(24px) saturate(200%);
-    border: 1px solid hsl(var(--border) / 0.8);
-    box-shadow: 0 12px 40px -10px hsl(var(--primary) / 0.15);
+    background: hsl(var(--card) / 0.65);
+    backdrop-filter: blur(32px) saturate(200%);
+    -webkit-backdrop-filter: blur(32px) saturate(200%);
+    border: 1px solid hsl(var(--border) / 0.6);
+    box-shadow: 
+      0 16px 48px -12px hsl(var(--primary) / 0.2),
+      inset 0 1px 0 0 hsl(var(--foreground) / 0.12);
+  }
+  .glass-photo {
+    background: hsl(var(--card) / 0.3);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 2px solid hsl(var(--primary) / 0.4);
+    box-shadow: 
+      0 0 40px -8px hsl(var(--primary) / 0.5),
+      0 0 80px -16px hsl(var(--accent) / 0.3),
+      inset 0 1px 0 0 hsl(var(--foreground) / 0.15);
   }
   .text-gradient {
     background: linear-gradient(
@@ -141,9 +154,8 @@
   background: hsl(var(--primary) / 0.7);
 }
 
-/* Mobile-specific improvements */
 @media (max-width: 640px) {
-  .glass, .glass-strong {
+  .glass, .glass-strong, .glass-photo {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
   }
