@@ -29,7 +29,8 @@ export function Projects() {
           description="A selection of production applications I've built and led across web and mobile platforms."
         />
 
-        <div className="grid w-full gap-4 sm:gap-6 md:grid-cols-2">
+        {/* auto-fit columns — adapts without breakpoint classes */}
+        <div className="grid-auto-lg">
           {projects.map((project, idx) => (
             <Reveal key={project.id} delay={idx * 0.08}>
               <ProjectCard
@@ -64,7 +65,6 @@ function ProjectCard({
       transition={{ type: 'spring', damping: 18, stiffness: 300 }}
       className="glass glass-sheen group flex h-full w-full flex-col rounded-2xl p-4 sm:p-6 border border-border/50 transition-all duration-300 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10"
     >
-      {/* Header */}
       <div className="mb-3 sm:mb-4 flex items-start justify-between gap-3">
         <div className="flex items-center gap-3 min-w-0">
           <span className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary/25 to-accent/25 text-primary transition-transform group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/20">
@@ -80,12 +80,10 @@ function ProjectCard({
         </Badge>
       </div>
 
-      {/* Description */}
       <p className="mb-3 sm:mb-4 text-sm leading-relaxed text-muted-foreground">
         {project.shortDescription}
       </p>
 
-      {/* Tech badges */}
       <div className="mb-3 sm:mb-4 flex flex-wrap gap-1.5">
         {project.technologies.map((tech) => (
           <span
@@ -97,7 +95,6 @@ function ProjectCard({
         ))}
       </div>
 
-      {/* Meta */}
       <div className="mb-4 sm:mb-5 grid grid-cols-3 gap-2 sm:gap-3 border-t border-border/40 pt-3 sm:pt-4 text-xs">
         <div className="min-w-0">
           <p className="text-muted-foreground">Role</p>
@@ -113,7 +110,6 @@ function ProjectCard({
         </div>
       </div>
 
-      {/* Button */}
       <div className="mt-auto">
         <Button
           variant="outline"
