@@ -338,4 +338,47 @@
 
     &:hover { background: hsl(var(--primary) / 0.7); }
   }
+
+  /* ===== Container Queries =====
+     Components adapt to their own width, not the viewport.
+     Use .cq-card on a parent; children can use cqi units and @container.
+  */
+  .cq-card {
+    container-type: inline-size;
+    container-name: card;
+  }
+  .cq-section {
+    container-type: inline-size;
+    container-name: section;
+  }
+
+  /* Fluid type that scales with the card, not the viewport */
+  .cq-title {
+    font-size: clamp(1rem, 0.85rem + 2.2cqi, 1.35rem);
+    line-height: 1.25;
+  }
+  .cq-body {
+    font-size: clamp(0.8125rem, 0.75rem + 0.8cqi, 0.9375rem);
+    line-height: 1.55;
+  }
+
+  /* Layout shifts based on the card's own width */
+  @container card (min-width: 420px) {
+    .cq-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .cq-row > .cq-icon {
+      flex-shrink: 0;
+    }
+  }
+
+  @container card (min-width: 560px) {
+    .cq-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+  }
 }
