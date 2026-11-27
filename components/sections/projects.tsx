@@ -15,22 +15,21 @@ import { Button } from '@/components/ui/button';
 import { Reveal } from '@/components/reveal';
 import { SectionHeader } from '@/components/section-header';
 import { projects, type Project } from '@/lib/portfolio-data';
-import { cn } from '@/lib/utils';
 
 export function Projects() {
   const [selected, setSelected] = React.useState<Project | null>(null);
 
   return (
-    <section id="projects" className="relative py-16 sm:py-24 md:py-32">
-      <div className="absolute right-1/4 top-0 h-72 w-72 rounded-full bg-accent/10 blur-[120px]" />
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+    <section id="projects" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
+      <div className="absolute right-1/4 top-0 h-48 w-48 sm:h-72 sm:w-72 rounded-full bg-accent/10 blur-[80px] sm:blur-[120px]" />
+      <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6">
         <SectionHeader
           eyebrow="Projects"
           title="Featured Work"
           description="A selection of production applications I've built and led across web and mobile platforms."
         />
 
-        <div className="grid gap-5 sm:gap-6 md:grid-cols-2">
+        <div className="grid w-full gap-4 sm:gap-6 md:grid-cols-2">
           {projects.map((project, idx) => (
             <Reveal key={project.id} delay={idx * 0.08}>
               <ProjectCard
@@ -63,10 +62,10 @@ function ProjectCard({
     <motion.div
       whileHover={{ y: -6 }}
       transition={{ type: 'spring', damping: 18, stiffness: 300 }}
-      className="glass glass-sheen group flex h-full flex-col rounded-2xl p-5 sm:p-6 border border-border/50 transition-all duration-300 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10"
+      className="glass glass-sheen group flex h-full w-full flex-col rounded-2xl p-4 sm:p-6 border border-border/50 transition-all duration-300 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10"
     >
       {/* Header */}
-      <div className="mb-4 flex items-start justify-between gap-3">
+      <div className="mb-3 sm:mb-4 flex items-start justify-between gap-3">
         <div className="flex items-center gap-3 min-w-0">
           <span className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary/25 to-accent/25 text-primary transition-transform group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/20">
             <PlatformIcon className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -82,12 +81,12 @@ function ProjectCard({
       </div>
 
       {/* Description */}
-      <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+      <p className="mb-3 sm:mb-4 text-sm leading-relaxed text-muted-foreground">
         {project.shortDescription}
       </p>
 
       {/* Tech badges */}
-      <div className="mb-4 flex flex-wrap gap-1.5">
+      <div className="mb-3 sm:mb-4 flex flex-wrap gap-1.5">
         {project.technologies.map((tech) => (
           <span
             key={tech}
@@ -98,19 +97,19 @@ function ProjectCard({
         ))}
       </div>
 
-      {/* Meta - stacks better on mobile */}
-      <div className="mb-5 grid grid-cols-3 gap-2 sm:gap-3 border-t border-border/40 pt-3 sm:pt-4 text-xs">
+      {/* Meta */}
+      <div className="mb-4 sm:mb-5 grid grid-cols-3 gap-2 sm:gap-3 border-t border-border/40 pt-3 sm:pt-4 text-xs">
         <div className="min-w-0">
           <p className="text-muted-foreground">Role</p>
           <p className="mt-0.5 font-medium truncate">{project.role}</p>
         </div>
         <div>
           <p className="text-muted-foreground">Team</p>
-          <p className="mt-0.5 font-medium">{project.team} members</p>
+          <p className="mt-0.5 font-medium">{project.team}</p>
         </div>
-        <div>
+        <div className="min-w-0">
           <p className="text-muted-foreground">Duration</p>
-          <p className="mt-0.5 font-medium">{project.duration}</p>
+          <p className="mt-0.5 font-medium truncate">{project.duration}</p>
         </div>
       </div>
 
@@ -166,7 +165,7 @@ function ProjectModal({
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ type: 'spring', damping: 24, stiffness: 300 }}
-        className="relative z-10 w-full max-w-2xl max-h-[90vh] overflow-y-auto glass-strong rounded-2xl p-5 sm:p-8"
+        className="relative z-10 w-full max-w-2xl max-h-[90vh] overflow-y-auto glass-strong rounded-2xl p-4 sm:p-8"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -177,25 +176,22 @@ function ProjectModal({
           <X className="h-5 w-5" />
         </button>
 
-        {/* Header */}
         <div className="mb-5 sm:mb-6 flex items-start gap-3 sm:gap-4 pr-10">
           <span className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent text-white">
             <PlatformIcon className="h-5 w-5 sm:h-6 sm:w-6" />
           </span>
-          <div>
-            <h3 className="text-xl sm:text-2xl font-bold">{project.name}</h3>
+          <div className="min-w-0">
+            <h3 className="text-lg sm:text-2xl font-bold">{project.name}</h3>
             <p className="mt-1 text-sm text-muted-foreground">
               {project.domain} &middot; {project.platform}
             </p>
           </div>
         </div>
 
-        {/* Description */}
         <p className="mb-5 sm:mb-6 text-sm sm:text-base leading-relaxed text-muted-foreground">
           {project.shortDescription}
         </p>
 
-        {/* Details grid */}
         <div className="mb-5 sm:mb-6 grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3">
           <DetailItem
             icon={<Users className="h-4 w-4" />}
@@ -214,7 +210,6 @@ function ProjectModal({
           />
         </div>
 
-        {/* Technologies */}
         <div className="mb-5 sm:mb-6">
           <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
             Technologies
@@ -228,7 +223,6 @@ function ProjectModal({
           </div>
         </div>
 
-        {/* Key contribution */}
         <div className="rounded-xl border border-primary/20 bg-primary/5 p-4 sm:p-5">
           <h4 className="mb-2 text-sm font-semibold uppercase tracking-wider text-primary">
             Key Contribution
@@ -255,7 +249,7 @@ function DetailItem({
         {icon}
       </div>
       <p className="text-xs text-muted-foreground">{label}</p>
-      <p className="mt-0.5 text-sm font-medium">{value}</p>
+      <p className="mt-0.5 text-sm font-medium truncate">{value}</p>
     </div>
   );
 }
